@@ -100,35 +100,8 @@ For Software:
 *After evading clicks up to a hidden random limit, the button surrenders and enables normal navigation.*
 
 # Diagrams
-
-### Architecture & Runtime Workflow
-
-```mermaid
-flowchart TD
-    A([User Opens New Tab]) --> B[Count Open Tabs in Current Window]
-    B --> C[Determine Hoarder Tier & Select Random Meme]
-    C --> D[Render Poster UI & Immediate Local Roast (0ms)]
-    D --> E[Asynchronously Query Local Server Proxy]
-    
-    subgraph Browser Extension [Chrome MV3 Runtime]
-        D
-        F{User Clicks Button?}
-        F -->|Click < Hidden Limit| G[Play No.mp3 + Relocate Button Randomly]
-        G --> F
-        F -->|Click == Hidden Limit| H[Play Yes.mp3 + Enter Exhausted State]
-        H --> I[Button Turns Stationary 'Fine. Take your tab.']
-        I -->|Final Click| J([Redirect to Google / Destination])
-    end
-
-    subgraph AI Enhancement [Optional Asynchronous Layer]
-        E --> K[POST http://localhost:3000/api/roast]
-        K --> L[OpenRouter API: Sarcastic Forensic Roast]
-        L --> M[Sanitize & Format Text]
-        M --> N[Dynamically Replace Roast in UI]
-        N --> O[Update Tag to 'AI-ENHANCED ROAST']
-    end
-```
-*Architecture separates instantaneous local rendering from optional asynchronous AI enhancement, ensuring the browser remains 100% functional and responsive offline.*
+![Workflow](Add your workflow/architecture diagram here)
+*Add caption explaining your workflow*
 
 
 # Build Photos
