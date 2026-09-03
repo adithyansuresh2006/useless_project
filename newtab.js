@@ -46,6 +46,26 @@ const SUPPLIED_MEME_POOL = [
     alt: "Animated Meme 4"
   },
   {
+    id: "gallery_gif_05",
+    src: "assets/memes/gallery/GIF-2026-09-04-03-30-15.gif",
+    alt: "Animated Meme 5"
+  },
+  {
+    id: "gallery_gif_06",
+    src: "assets/memes/gallery/GIF-2026-09-04-03-31-02.gif",
+    alt: "Animated Meme 6"
+  },
+  {
+    id: "gallery_gif_07",
+    src: "assets/memes/gallery/GIF-2026-09-04-03-31-44.gif",
+    alt: "Animated Meme 7"
+  },
+  {
+    id: "gallery_gif_08",
+    src: "assets/memes/gallery/GIF-2026-09-04-03-32-38.gif",
+    alt: "Animated Meme 8"
+  },
+  {
     id: "gallery_jpg_01",
     src: "assets/memes/gallery/PHOTO-2026-09-03-23-07-18 2.jpg",
     alt: "Photo Meme 1"
@@ -59,6 +79,11 @@ const SUPPLIED_MEME_POOL = [
     id: "gallery_jpg_03",
     src: "assets/memes/gallery/PHOTO-2026-09-03-23-07-18.jpg",
     alt: "Photo Meme 3"
+  },
+  {
+    id: "gallery_jpg_04",
+    src: "assets/memes/gallery/PHOTO-2026-09-04-03-29-21.jpg",
+    alt: "Photo Meme 4"
   }
 ];
 

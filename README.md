@@ -10,8 +10,8 @@
 
 
 ### Team Members
-- Team Lead: [Adithyan Suresh] - [Model Engineering college]
-- Member 2: [Adisesh] - [Model engineering college]
+- Team Lead: Adithyan Suresh - Model Engineering college
+- Member 2: Adisesh - Model engineering college
 
 ### Project Description
 Useless New Tab Roaster is a humorous Chrome Manifest V3 extension that turns the otherwise ordinary New Tab page into an interactive browser “incident report” that roasts users for their tab-hoarding habits.
@@ -36,25 +36,10 @@ For Software:
 ### Implementation
 For Software:
 # Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/adithyansuresh2006/useless_project.git
-   cd useless_project
-   ```
-2. (Optional for AI roasts) Configure your local server environment:
-   ```bash
-   # Add OPENROUTER_API_KEY to server/.env if using AI roasts
-   ```
+[commands]
 
 # Run
-1. Open Google Chrome and navigate to `chrome://extensions/`.
-2. Enable **Developer mode** toggle in the top right corner.
-3. Click **Load unpacked** and select the `useless_project` root folder.
-4. Open a new tab to see your browser roast your open tabs in real-time!
-5. (Optional) Start the local AI proxy server:
-   ```bash
-   node server/server.js
-   ```
+[commands]
 
 ### Project Documentation
 For Software:
