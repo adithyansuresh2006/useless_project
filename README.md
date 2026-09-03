@@ -2,39 +2,36 @@
 
 
 
-# [Project Name] 🎯
+# Useless New Tab Roaster 💀
 
 
 ## Basic Details
-### Team Name: [Null point]
+### Team Name: Null point
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: [Adithyan Suresh] - [Model Engineering college]
+- Member 2: [Adisesh] - [Model engineering college]
 
 ### Project Description
-[2-3 lines about what your project does]
+Useless New Tab Roaster is a humorous Chrome Manifest V3 extension that turns the otherwise ordinary New Tab page into an interactive browser “incident report” that roasts users for their tab-hoarding habits.
+The project is designed around a simple idea: your browser should judge you for having too many tabs open.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Modern browsers make it incredibly easy to accumulate tabs.
+Eventually, your browser looks less like a workspace and more like a digital archaeological site.
+Yet Chrome simply sits there silently judging you.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+Useless New Tab Roaster is a deliberately unnecessary Chrome extension that turns your excessive tab count into memes, sarcastic roasts, evasive buttons, sound effects, and optional AI-powered humiliation.
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- HTML,CSS,Javascript,json
+- No major frontend framework is used.
+- Antigravity and chatgpt
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
 
 ### Implementation
 For Software:
@@ -61,14 +58,6 @@ For Software:
 ![Workflow](Add your workflow/architecture diagram here)
 *Add caption explaining your workflow*
 
-For Hardware:
-
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
 
 # Build Photos
 ![Components](Add photo of your components here)
@@ -89,7 +78,7 @@ For Hardware:
 [Add any extra demo materials/links]
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
+- Adithyan Suresh : [Specific contributions]
 - [Name 2]: [Specific contributions]
 - [Name 3]: [Specific contributions]
 
