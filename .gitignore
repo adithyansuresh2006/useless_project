@@ -1,0 +1,9 @@
+# local env files
+.env*
+.env
+.env.local
+
+# temporary test files
+.chrome_*
+.DS_Store
+node_modules/

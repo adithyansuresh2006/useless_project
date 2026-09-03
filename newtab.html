@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Tab (Under Protest)</title>
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="ambient-glow glow-top"></div>
+  <div class="ambient-glow glow-bottom"></div>
+  <div class="cyber-grid"></div>
+
+  <!-- Cursor Text Trail Overlay (Zero Pointer Events) -->
+  <div id="cursor-trail-container" class="cursor-trail-container" aria-hidden="true"></div>
+
+  <!-- Full-Screen Interactive Poster Experience -->
+  <div class="app-viewport" id="roast-container">
+    
+    <!-- Top System Intervention HUD Bar -->
+    <header class="hud-top-bar">
+      <div class="hud-left">
+        <span class="live-pulse-dot"></span>
+        <span class="hud-title">TAB HOARDING INTERVENTION PROTOCOL</span>
+        <span class="badge badge-tier" id="tier-badge">The Tab Hoarder</span>
+      </div>
+
+      <div class="hud-center">
+        <!-- Cosmetic Browser Integrity Meter -->
+        <div class="health-indicator" id="health-indicator" aria-label="Cosmetic Browser Integrity">
+          <div class="health-header">
+            <span class="health-title">BROWSER INTEGRITY</span>
+            <span class="health-status" id="health-status">CALCULATING...</span>
+          </div>
+          <div class="health-track">
+            <div class="health-fill" id="health-fill" style="width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hud-right">
+        <div class="hud-status-badge">
+          <span class="status-dot"></span>
+          <span class="status-label">STATUS: HOSTILE</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Full-Screen Split Stage -->
+    <main class="main-stage">
+      <!-- Left Column: Giant Tab Count & Diagnostics -->
+      <section class="stage-left">
+        <div class="hero-tab-block">
+          <div class="hero-count-row">
+            <span class="hero-count-num" id="hero-count-num">0</span>
+            <span class="hero-count-flame" id="hero-count-flame">🔥</span>
+          </div>
+          <div class="hero-label-block">
+            <h1 class="hero-count-label" id="hero-count-label">OTHER TABS ALREADY OPEN</h1>
+            <p class="hero-subtext">YOUR BROWSER IS JUDGING YOU AND REFUSES TO COOPERATE</p>
+          </div>
+        </div>
+
+        <!-- Legacy hidden badge for backward compatibility -->
+        <span class="hidden-badge" id="tab-count-badge">Loading tabs...</span>
+      </section>
+
+      <!-- Right Column: Primary Meme + Roast Presentation -->
+      <section class="stage-right">
+        <div class="meme-poster-frame">
+          <div class="frame-corner corner-tl"></div>
+          <div class="frame-corner corner-tr"></div>
+          <div class="frame-corner corner-bl"></div>
+          <div class="frame-corner corner-br"></div>
+          
+          <div class="meme-wrapper" id="meme-container">
+            <img id="meme-img" src="" alt="Roast Meme" class="meme-image">
+            <div id="meme-fallback" class="meme-fallback hidden">
+              <div class="fallback-icon">🔥</div>
+              <p class="fallback-text">Too many tabs to even render this meme.</p>
+            </div>
+          </div>
+
+          <!-- System Verdict / Direct Roast Card (Directly Below Meme) -->
+          <div class="verdict-card">
+            <div class="verdict-header">
+              <span class="quote-mark">“</span>
+              <span class="verdict-tag">SYSTEM VERDICT</span>
+            </div>
+            <p class="roast-text" id="roast-text">Analyzing your digital hoarding decisions...</p>
+          </div>
+
+          <div class="frame-footer">
+            <span class="frame-label">INCIDENT VISUAL EVIDENCE</span>
+            <span class="frame-tag" id="frame-tag">100% OFFLINE ROAST</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Bottom HUD Bar -->
+    <footer class="hud-bottom-bar">
+      <div class="bottom-status-left">
+        <span class="bottom-icon">⚠️</span>
+        <span class="escape-hint" id="escape-hint">Your browser is actively resisting new tab creation.</span>
+      </div>
+      <div class="bottom-status-right">
+        <span class="bottom-microcopy">CLICK AT YOUR OWN RISK</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- The Evasive Click-Only Protagonist Button -->
+  <button id="dodging-btn" class="dodging-btn" type="button" aria-label="Open New Tab">
+    <span class="btn-icon" id="btn-icon">⚡</span>
+    <span class="btn-text" id="btn-text">New Tab</span>
+  </button>
+
+  <script src="newtab.js"></script>
+</body>
+</html>

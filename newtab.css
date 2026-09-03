@@ -1,0 +1,712 @@
+/* ============================================================= */
+/* THE USELESS NEW TAB ROASTER — FULL-SCREEN POSTER + TRAIL CSS  */
+/* ============================================================= */
+
+:root {
+  --bg-dark: #07090e;
+  --bg-surface: rgba(14, 18, 27, 0.88);
+  --bg-surface-elevated: rgba(22, 28, 42, 0.82);
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-accent: rgba(255, 75, 43, 0.38);
+
+  --text-white: #ffffff;
+  --text-main: #f0f6fc;
+  --text-muted: #8b949e;
+  --text-dim: #545d68;
+
+  --accent-flame: #ff4b2b;
+  --accent-orange: #ff8c00;
+  --accent-gold: #ffd200;
+  --accent-emerald: #38ef7d;
+  --accent-purple: #a371f7;
+  --accent-crimson: #ff1744;
+
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", ui-monospace, Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-dark);
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  position: relative;
+}
+
+/* ------------------------------------------------------------- */
+/* Cursor Text Trail Effect Overlay                              */
+/* ------------------------------------------------------------- */
+.cursor-trail-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none !important;
+  z-index: 999;
+  overflow: hidden;
+}
+
+.cursor-trail-item {
+  position: fixed;
+  pointer-events: none !important;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 800;
+  color: #ff8c00;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 10px rgba(255, 140, 0, 0.6), 0 0 20px rgba(255, 75, 43, 0.4);
+  opacity: 0.95;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  animation: trailExit 0.4s ease-out forwards;
+}
+
+@keyframes trailExit {
+  0% {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(1) rotate(var(--rot, 0deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--dx, 0px), var(--dy, -15px)) scale(0.7) rotate(calc(var(--rot, 0deg) + 10deg));
+  }
+}
+
+/* ------------------------------------------------------------- */
+/* Ambient Background Atmosphere & Cyber Grid                    */
+/* ------------------------------------------------------------- */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.42;
+}
+
+.glow-top {
+  width: 700px;
+  height: 700px;
+  top: -200px;
+  left: 20%;
+  background: radial-gradient(circle, rgba(255, 75, 43, 0.38) 0%, rgba(255, 140, 0, 0.16) 50%, transparent 75%);
+}
+
+.glow-bottom {
+  width: 650px;
+  height: 650px;
+  bottom: -200px;
+  right: 15%;
+  background: radial-gradient(circle, rgba(163, 113, 247, 0.32) 0%, transparent 70%);
+}
+
+.cyber-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 2;
+  mask-image: radial-gradient(circle at center, black 55%, transparent 92%);
+  -webkit-mask-image: radial-gradient(circle at center, black 55%, transparent 92%);
+}
+
+/* ------------------------------------------------------------- */
+/* Full-Screen Main Viewport Wrapper                             */
+/* ------------------------------------------------------------- */
+.app-viewport {
+  position: relative;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ------------------------------------------------------------- */
+/* 1. Top HUD Bar                                                */
+/* ------------------------------------------------------------- */
+.hud-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.live-pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent-flame);
+  box-shadow: 0 0 10px var(--accent-flame);
+  animation: pulseLive 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseLive {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+.hud-title {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.badge-tier {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: rgba(163, 113, 247, 0.15);
+  color: #d2a8ff;
+  border: 1px solid rgba(163, 113, 247, 0.35);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Cosmetic Browser Integrity Meter */
+.hud-center {
+  flex: 0 1 360px;
+}
+
+.health-indicator {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 8px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.health-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.health-title {
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.health-status {
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  transition: color 0.3s ease;
+}
+
+.health-track {
+  width: 100%;
+  height: 6px;
+  background: #141820;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.health-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.4s ease;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.hud-right {
+  display: flex;
+  align-items: center;
+}
+
+.hud-status-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 23, 68, 0.1);
+  border: 1px solid rgba(255, 23, 68, 0.35);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-crimson);
+  box-shadow: 0 0 8px var(--accent-crimson);
+}
+
+.status-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #ff7b72;
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------- */
+/* 2. Main Full-Screen Split Stage                               */
+/* ------------------------------------------------------------- */
+.main-stage {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 36px;
+  align-items: center;
+  padding: 16px 0;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Stage Left: Massive Hero Tab Counter & Diagnostics */
+.stage-left {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.hero-tab-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-count-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.hero-count-num {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 8.5vw, 8rem);
+  font-weight: 900;
+  line-height: 0.92;
+  background: linear-gradient(135deg, #ffffff 0%, #ff8c00 45%, #ff4b2b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.05em;
+  text-shadow: 0 10px 30px rgba(255, 75, 43, 0.25);
+}
+
+.hero-count-flame {
+  font-size: clamp(2.6rem, 4.2vw, 4rem);
+  animation: flameFloat 2.2s infinite ease-in-out;
+}
+
+@keyframes flameFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.1); }
+}
+
+.hero-label-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-count-label {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.1vw, 1.85rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.hero-subtext {
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1vw, 0.88rem);
+  font-weight: 700;
+  color: var(--accent-orange);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Verdict / Direct Roast Card (Directly Below Meme) */
+.verdict-card {
+  background: rgba(10, 14, 20, 0.85);
+  border: 1px solid var(--border-accent);
+  border-radius: 12px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.verdict-card.animate-roast {
+  animation: roastSlideIn 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+@keyframes roastSlideIn {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.verdict-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quote-mark {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--accent-flame);
+  line-height: 1;
+}
+
+.verdict-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.roast-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.98rem, 1.25vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.45;
+  color: #ffc8bc;
+}
+
+.hidden-badge {
+  display: none;
+}
+
+/* Stage Right: Meme Poster Frame */
+.stage-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.meme-poster-frame {
+  width: 100%;
+  max-width: 540px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.frame-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: var(--accent-orange);
+  border-style: solid;
+}
+
+.corner-tl { top: 8px; left: 8px; border-width: 2px 0 0 2px; }
+.corner-tr { top: 8px; right: 8px; border-width: 2px 2px 0 0; }
+.corner-bl { bottom: 8px; left: 8px; border-width: 0 0 2px 2px; }
+.corner-br { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+.meme-wrapper {
+  width: 100%;
+  height: 280px;
+  background: #040608;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.95);
+}
+
+.meme-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.meme-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.meme-fallback.hidden {
+  display: none;
+}
+
+.fallback-icon {
+  font-size: 2.4rem;
+}
+
+.fallback-text {
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.frame-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  padding: 0 4px;
+}
+
+.frame-label {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.frame-tag {
+  color: var(--accent-flame);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* ------------------------------------------------------------- */
+/* 3. Bottom HUD Bar                                             */
+/* ------------------------------------------------------------- */
+.hud-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.bottom-status-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bottom-icon {
+  font-size: 1rem;
+}
+
+.escape-hint {
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  font-style: italic;
+  transition: color 0.3s ease;
+}
+
+.bottom-status-right {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------- */
+/* 4. Click-Only Dodging Protagonist Button                     */
+/* ------------------------------------------------------------- */
+.dodging-btn {
+  position: fixed;
+  z-index: 1000;
+  padding: 15px 32px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff2d55 0%, #ff5e36 50%, #ff9500 100%);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 
+    0 14px 36px rgba(255, 45, 85, 0.55), 
+    0 0 24px rgba(255, 94, 54, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  outline: none;
+  will-change: top, left, transform;
+  animation: heroPulse 2.8s infinite ease-in-out;
+  transition: 
+    top 0.26s cubic-bezier(0.2, 0.9, 0.3, 1),
+    left 0.26s cubic-bezier(0.2, 0.9, 0.3, 1),
+    transform 0.15s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+@keyframes heroPulse {
+  0%, 100% {
+    box-shadow: 0 14px 36px rgba(255, 45, 85, 0.55), 0 0 24px rgba(255, 94, 54, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 18px 46px rgba(255, 45, 85, 0.75), 0 0 34px rgba(255, 94, 54, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  }
+}
+
+.dodging-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 20px 48px rgba(255, 45, 85, 0.8), 0 0 40px rgba(255, 94, 54, 0.6);
+}
+
+.dodging-btn:active {
+  transform: scale(0.96);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+}
+
+/* Escape Wobble & Panic Choreography */
+.dodging-btn.evading {
+  animation: buttonWobble 0.28s ease-in-out;
+}
+
+.dodging-btn.panic {
+  animation: buttonPanic 0.32s ease-in-out;
+}
+
+@keyframes buttonWobble {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(0.92) rotate(-8deg); }
+  75% { transform: scale(1.08) rotate(8deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes buttonPanic {
+  0% { transform: scale(1.1) rotate(0deg); }
+  20% { transform: scale(0.88) rotate(-14deg); }
+  40% { transform: scale(1.18) rotate(14deg); }
+  60% { transform: scale(0.9) rotate(-10deg); }
+  80% { transform: scale(1.06) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* Screen Micro-Shake on Clicks */
+body.screen-shake {
+  animation: screenShakeAnim 0.28s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes screenShakeAnim {
+  10%, 90% { transform: translate3d(-3px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-5px, 0, 0); }
+  40%, 60% { transform: translate3d(5px, 0, 0); }
+}
+
+/* Exhausted / Clickable Final State */
+.dodging-btn.is-exhausted {
+  background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%);
+  color: #05140f;
+  cursor: pointer !important;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 40px rgba(56, 239, 125, 0.75), 0 4px 14px rgba(0, 0, 0, 0.6);
+  animation: pulseGlow 1.8s infinite ease-in-out;
+  transform: scale(1.06);
+}
+
+.dodging-btn.is-exhausted:hover {
+  transform: scale(1.14);
+  box-shadow: 0 0 50px rgba(56, 239, 125, 0.95), 0 6px 18px rgba(0, 0, 0, 0.7);
+}
+
+.dodging-btn.is-exhausted:active {
+  transform: scale(0.98);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 28px rgba(56, 239, 125, 0.5), 0 4px 14px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(56, 239, 125, 0.9), 0 8px 22px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* ------------------------------------------------------------- */
+/* Responsive Collapse for Smaller Viewports                     */
+/* ------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .app-viewport {
+    padding: 16px 20px;
+  }
+  .main-stage {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px 0;
+  }
+  .meme-poster-frame {
+    max-width: 320px;
+  }
+  .meme-wrapper {
+    height: 180px;
+  }
+  .hero-count-num {
+    font-size: 3.8rem;
+  }
+  .hud-center {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-trail-container {
+    display: none;
+  }
+  .dodging-btn, .hero-count-flame, .live-pulse-dot {
+    animation: none !important;
+  }
+}
