@@ -36,10 +36,52 @@ For Software:
 ### Implementation
 For Software:
 # Installation
-[commands]
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/adithyansuresh2006/useless_project.git
+   cd useless_project
+   ```
+2. (Optional for AI roasts) Set up the server environment:
+   ```bash
+   # Add OPENROUTER_API_KEY to server/.env if using AI roasts
+   ```
 
 # Run
-[commands]
+1. Open Google Chrome and navigate to `chrome://extensions/`.
+2. Enable **Developer mode** in the top right corner.
+3. Click **Load unpacked** and select the `useless_project` directory.
+4. Open a New Tab to experience the roaster!
+5. (Optional) Run the local AI server:
+   ```bash
+   node server/server.js
+   ```
+
+### File Structure
+```
+useless_project/
+├── manifest.json              # Chrome Manifest V3 configuration & permissions
+├── newtab.html                # Poster UI layout & Incident Report stage
+├── newtab.css                 # Cyber-poster aesthetic, typography & evasive styles
+├── newtab.js                  # Tab counting, evasion state machine & audio controller
+├── No.mp3                     # Non-final evasion sound effect
+├── Yes.mp3                    # Final surrender sound effect
+├── assets/
+│   ├── icons/                 # Extension icons (16px, 48px, 128px)
+│   └── memes/
+│       ├── gallery/           # Curated collection of user GIFs and JPEGs
+│       ├── range_0_5/         # Minimalist tier fallback pixel memes
+│       ├── range_6_10/        # Multitasker tier fallback pixel memes
+│       ├── range_11_20/       # Tab Hoarder tier fallback pixel memes
+│       ├── range_21_30/       # RAM Destroyer tier fallback pixel memes
+│       ├── range_31_50/       # Digital Chaos tier fallback pixel memes
+│       └── range_51_plus/     # Meltdown tier fallback pixel memes
+├── screenshots/               # Demonstration captures for documentation
+├── server/
+│   ├── server.js              # Standalone Node.js proxy for OpenRouter AI roasts
+│   └── .env                   # Secret isolation (never exposed to browser)
+├── ARCHITECTURE.md            # Technical specifications & design rules
+└── README.md                  # Project documentation & setup guide
+```
 
 ### Project Documentation
 For Software:
@@ -58,8 +100,35 @@ For Software:
 *After evading clicks up to a hidden random limit, the button surrenders and enables normal navigation.*
 
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
+
+### Architecture & Runtime Workflow
+
+```mermaid
+flowchart TD
+    A([User Opens New Tab]) --> B[Count Open Tabs in Current Window]
+    B --> C[Determine Hoarder Tier & Select Random Meme]
+    C --> D[Render Poster UI & Immediate Local Roast (0ms)]
+    D --> E[Asynchronously Query Local Server Proxy]
+    
+    subgraph Browser Extension [Chrome MV3 Runtime]
+        D
+        F{User Clicks Button?}
+        F -->|Click < Hidden Limit| G[Play No.mp3 + Relocate Button Randomly]
+        G --> F
+        F -->|Click == Hidden Limit| H[Play Yes.mp3 + Enter Exhausted State]
+        H --> I[Button Turns Stationary 'Fine. Take your tab.']
+        I -->|Final Click| J([Redirect to Google / Destination])
+    end
+
+    subgraph AI Enhancement [Optional Asynchronous Layer]
+        E --> K[POST http://localhost:3000/api/roast]
+        K --> L[OpenRouter API: Sarcastic Forensic Roast]
+        L --> M[Sanitize & Format Text]
+        M --> N[Dynamically Replace Roast in UI]
+        N --> O[Update Tag to 'AI-ENHANCED ROAST']
+    end
+```
+*Architecture separates instantaneous local rendering from optional asynchronous AI enhancement, ensuring the browser remains 100% functional and responsive offline.*
 
 
 # Build Photos
