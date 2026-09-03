@@ -45,14 +45,17 @@ For Software:
 For Software:
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot1](screenshots/screenshot1.png)
+*Live Tab Count & Dynamic Visual Evidence:*
+*Real-time current-window tab counting paired with contextual memes and instant roasts.*
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot2](screenshots/screenshot2.png)
+*Tab Hoarder Tier & Escalated Roasts:*
+*Custom tier progression displaying hilarious visual incident reports as open tabs increase.*
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+![Screenshot3](screenshots/screenshot3.png)
+*Exhausted Button State & Surrender Interaction:*
+*After evading clicks up to a hidden random limit, the button surrenders and enables normal navigation.*
 
 # Diagrams
 ![Workflow](Add your workflow/architecture diagram here)
