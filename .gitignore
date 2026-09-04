@@ -7,3 +7,6 @@
 .chrome_*
 .DS_Store
 node_modules/
+
+# large raw screen recordings (>100MB exceeds GitHub limits)
+*.mov
